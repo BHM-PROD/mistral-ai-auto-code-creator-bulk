@@ -957,8 +957,8 @@ define('DEBUG_MODE', isset($_GET['debug']));
   for (const [fname, content] of Object.entries(generatedFiles)) {
     if (fname.endsWith('.php') && !content.includes('debug-panel') && content.includes('<body')) {
       // Inject debug panel before </body>
-      const phpOpen = '<?php';
-      const phpClose = '?>';
+const phpOpen = '<' + '?php';
+const phpClose = '?' + '>';
       const debugPanel = `
 ${phpOpen} if(isset($_GET['debug'])): ${phpClose}
 <div id="auto-debug-panel" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#0f0;font-family:monospace;font-size:12px;padding:10px;z-index:9999;border-top:2px solid #0f0;max-height:200px;overflow-y:auto;">
